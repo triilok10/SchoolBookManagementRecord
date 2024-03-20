@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse" style="height:100vh">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+
+                        <li class="nav-item">
+                            @Html.ActionLink("School Management ", "Index", "Home", new { area = "", @class = "nav-link text-white p-3" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("DashBoard", "DashBoard", "Home", new { area = "", @class = "nav-link text-white p-3" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Finance", "Accounts", "Home", new { area = "", @class = "nav-link text-white p-3" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Students", "Students", "Home", new { area = "", @class = "nav-link text-white p-3" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Teachers", "Teachers", "Home", new { area = "" , @class = "nav-link text-white p-3" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Notices", "Notices", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Attendance", "Attendance", "Home", new { area = "" , @class = "nav-link text-white p-3" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Classes", "Classes", "Home", new { area = "", @class = "nav-link text-white p-3" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Transport", "Transport", "Home", new { area = "", @class = "nav-link text-white p-3" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Departments", "Departments", "Home", new { area = "", @class = "nav-link text-white p-3" })
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <!-- Main content area -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="background-color:lightgrey">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+    <div class="container body-content">
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

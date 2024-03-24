@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="obj\Release\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="obj\Release\FrameworkDisplayNameAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -148,11 +149,18 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Add.png" />
     <Content Include="Images\boy.png" />
+    <Content Include="Images\boypresent %281%29.png" />
+    <Content Include="Images\Delete.png" />
+    <Content Include="Images\girlpresent.png" />
     <Content Include="Images\girlstudent.png" />
+    <Content Include="Images\other.png" />
     <Content Include="Images\students.png" />
     <Content Include="Images\studentsLogo.png" />
     <Content Include="Images\transgender.png" />
+    <Content Include="Images\Update.png" />
+    <Content Include="Images\View.png" />
     <Content Include="obj\Debug\SchoolBookManagementRecord.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\SchoolBookManagementRecord.dll" />
     <Content Include="obj\Debug\SchoolBookManagementRecord.pdb" />

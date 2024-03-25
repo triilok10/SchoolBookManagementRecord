@@ -68,10 +68,101 @@ namespace SchoolBookManagementRecord.Controllers
         }
         #endregion
 
-        #region "Update Student"
+        #region "Update Student GET"
         public ActionResult UpdateStudent()
         {
-            return View();
+            List<Student> ltrStudents = new List<Student>();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("AddViewStudents", con);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    con.Open();
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            Student objStudent = new Student();
+
+                            objStudent.Id = Convert.ToInt32(rdr["ID"]);
+                            objStudent.FirstName = Convert.ToString(rdr["FirstName"]);
+                            objStudent.LastName = Convert.ToString(rdr["LastName"]);
+                            objStudent.FatherName = Convert.ToString(rdr["FatherName"]);
+                            objStudent.MotherName = Convert.ToString(rdr["MotherName"]);
+                            objStudent.Address = Convert.ToString(rdr["Address"]);
+                            objStudent.Remarks = Convert.ToString(rdr["Remarks"]);
+
+                            if (Enum.TryParse<GenderType>(Convert.ToString(rdr["Gender"]), out GenderType gender))
+                            {
+                                objStudent.Gender = gender;
+                            }
+                            if (Enum.TryParse<ClassName>(Convert.ToString(rdr["Class"]), out ClassName classname))
+                            {
+                                objStudent.Class = classname;
+                            }
+                            byte[] photodata = (byte[])rdr["PhotoStore"];
+                            string base64StringPhoto = Convert.ToBase64String(photodata);
+
+                            //   objStudent.PhotoBase64 = base64StringPhoto;
+
+                            ltrStudents.Add(objStudent);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return View(ex.Message);
+            }
+            return View(ltrStudents);
+        }
+        #endregion
+        #region"Update Student Post"
+
+        public ActionResult UpdateStudentData(int id)
+        {
+            try
+            {
+                Student objStudent = null;
+
+                using (var con = new SqlConnection(CS))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("UpdateTheRecordData", con)
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        if (rdr.Read())
+                        {
+                            objStudent = new Student
+                            {
+                                Id = Convert.ToInt32(rdr["Id"]),
+                                FirstName = Convert.ToString(rdr["FirstName"]),
+                                LastName = Convert.ToString(rdr["LastName"]),
+                                FatherName = Convert.ToString(rdr["FathersName"]),
+                                MotherName = Convert.ToString(rdr["MotherName"]),
+                                Gender = (GenderType)Enum.Parse(typeof(GenderType), Convert.ToString(rdr["StudentGender"])),
+                                Address = Convert.ToString(rdr["Address"]),
+                                Class = (ClassName)Enum.Parse(typeof(ClassName), Convert.ToString(rdr["Class"]))
+                            };
+                        }
+                    }
+                }
+
+                if (objStudent == null)
+                {
+                    return RedirectToAction("Record");
+                }
+
+                return View("UpdateStudentData", objStudent);
+            }
+            catch (Exception ex)
+            {
+                return View(ex.Message);
+            }
         }
         #endregion
 
@@ -181,7 +272,7 @@ namespace SchoolBookManagementRecord.Controllers
             {
                 return View(ex.Message);
             }
-            return RedirectToAction("Students");
+            return RedirectToAction("ViewStudent");
         }
         #endregion
     }

@@ -53,7 +53,7 @@ namespace SchoolBookManagementRecord.Controllers
                             byte[] photodata = (byte[])rdr["PhotoStore"];
                             string base64StringPhoto = Convert.ToBase64String(photodata);
 
-                         //   objStudent.PhotoBase64 = base64StringPhoto;
+                            //   objStudent.PhotoBase64 = base64StringPhoto;
 
                             ltrStudents.Add(objStudent);
                         }
@@ -107,7 +107,7 @@ namespace SchoolBookManagementRecord.Controllers
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 return View(ex.Message);
             }
@@ -122,10 +122,66 @@ namespace SchoolBookManagementRecord.Controllers
             return View();
         }
         #endregion
+
         #region "Delete Student"
         public ActionResult DeleteStudent()
         {
-            return View();
+            List<Student> ltrStudents = new List<Student>();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("AddViewStudents", con);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    con.Open();
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            Student objStudent = new Student();
+
+                            objStudent.Id = Convert.ToInt32(rdr["ID"]);
+                            objStudent.FirstName = Convert.ToString(rdr["FirstName"]);
+                            objStudent.LastName = Convert.ToString(rdr["LastName"]);
+                            objStudent.Remarks = Convert.ToString(rdr["Remarks"]);
+                            if (Enum.TryParse<ClassName>(Convert.ToString(rdr["Class"]), out ClassName classname))
+                            {
+                                objStudent.Class = classname;
+                            }
+                           // byte[] photodata = (byte[])rdr["PhotoStore"];
+                           // string base64StringPhoto = Convert.ToBase64String(photodata);
+
+                            //   objStudent.PhotoBase64 = base64StringPhoto;
+
+                            ltrStudents.Add(objStudent);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) 
+            {
+             return View(ex.Message);
+            }
+            return View(ltrStudents);
+        }
+        public ActionResult DeleteStudentData(int id)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("DeleteStudentByID", con);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                return View(ex.Message);
+            }
+            return RedirectToAction("Students");
         }
         #endregion
     }

@@ -1,7 +1,35 @@
-﻿
-@{
-    ViewBag.Title = "DeleteStudent";
-}
+﻿@model List<SchoolBookManagementRecord.Models.Student>
 
-<h2>DeleteStudent</h2>
+<div class="text-center">
+    <br />
+    <h2 class="text-danger"> Delete the Student Data</h2>
 
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th> ID </th>
+                <th> First Name </th>
+                <th> Last Name </th>
+                <th> Class </th>
+                <th> Remarks </th>
+                <th> Photo </th>
+                <th> Action </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> @item.Id </td>
+                    <td> @item.FirstName</td>
+                    <td> @item.LastName </td>
+                    <td> @item.Class</td>
+                    <td> @item.Remarks </td>
+                    <td> @item.PhotoFile </td>
+                    <td>@Html.ActionLink("Delete", "DeleteStudentData", new { id = item.Id, onclick = "return confirm('Are you sure to delete this data?')" })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

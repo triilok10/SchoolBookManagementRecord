@@ -121,9 +121,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentUtilityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Student.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="obj\Release\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="obj\Release\FrameworkDisplayNameAttribute.cs" />
@@ -485,10 +487,13 @@
     <Content Include="Views\Home\Classes.cshtml" />
     <Content Include="Views\Home\Transport.cshtml" />
     <Content Include="Views\Home\Departments.cshtml" />
+    <Content Include="Views\StudentUtility\ViewStudent.cshtml" />
+    <Content Include="Views\StudentUtility\UpdateStudent.cshtml" />
+    <Content Include="Views\StudentUtility\AddStudent.cshtml" />
+    <Content Include="Views\StudentUtility\DeleteStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>

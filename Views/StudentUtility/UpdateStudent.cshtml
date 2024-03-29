@@ -2,7 +2,7 @@
 
 <div class="text-center">
     <br />
-    <h2 class="text-danger"> View Student Record</h2>
+    <h2 class="text-danger"> Update Student Record</h2>
 
     <table class="table table-bordered table-hover">
         <thead>
@@ -15,11 +15,8 @@
                 <th> Class </th>
                 <th> Gender </th>
                 <th> Address </th>
-                <th> Phone Number </th>
                 <th> Remarks </th>
-                <th> Photo </th>
                 <th> Action </th>
-
             </tr>
         </thead>
         <tbody>
@@ -34,7 +31,8 @@
                     <td> @item.Class</td>
                     <td> @item.Gender</td>
                     <td> @item.Address</td>
-                    <td> <a href="@Url.Action("GetUpdateRecordMain","Home" , new {id = item.Id})"> Edit </a> </td>
+                    <td> @item.Remarks </td>
+                    <td> <a href="@Url.Action("UpdateChangeData","StudentUtility" , new {id = item.Id})"> Edit </a> </td>
                 </tr>
             }
         </tbody>

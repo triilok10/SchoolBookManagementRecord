@@ -12,9 +12,7 @@
                 <th> Last Name </th>
                 <th> Class </th>
                 <th> Remarks </th>
-                <th> Photo </th>
                 <th> Action </th>
-
             </tr>
         </thead>
         <tbody>
@@ -26,7 +24,6 @@
                     <td> @item.LastName </td>
                     <td> @item.Class</td>
                     <td> @item.Remarks </td>
-                    <td> @item.PhotoFile </td>
                     <td>@Html.ActionLink("Delete", "DeleteStudentData", new { id = item.Id, onclick = "return confirm('Are you sure to delete this data?')" })</td>
                 </tr>
             }

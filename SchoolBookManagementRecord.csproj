@@ -491,6 +491,7 @@
     <Content Include="Views\StudentUtility\UpdateStudent.cshtml" />
     <Content Include="Views\StudentUtility\AddStudent.cshtml" />
     <Content Include="Views\StudentUtility\DeleteStudent.cshtml" />
+    <Content Include="Views\StudentUtility\UpdateChangeData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

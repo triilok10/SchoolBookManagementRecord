@@ -50,11 +50,6 @@ namespace SchoolBookManagementRecord.Controllers
                             {
                                 objStudent.Class = classname;
                             }
-                            byte[] photodata = (byte[])rdr["PhotoStore"];
-                            string base64StringPhoto = Convert.ToBase64String(photodata);
-
-                            //   objStudent.PhotoBase64 = base64StringPhoto;
-
                             ltrStudents.Add(objStudent);
                         }
                     }
@@ -101,11 +96,7 @@ namespace SchoolBookManagementRecord.Controllers
                             {
                                 objStudent.Class = classname;
                             }
-                            byte[] photodata = (byte[])rdr["PhotoStore"];
-                            string base64StringPhoto = Convert.ToBase64String(photodata);
-
-                            //   objStudent.PhotoBase64 = base64StringPhoto;
-
+                            
                             ltrStudents.Add(objStudent);
                         }
                     }
@@ -129,7 +120,7 @@ namespace SchoolBookManagementRecord.Controllers
                 using (var con = new SqlConnection(CS))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UpdateTheRecordData", con)
+                    SqlCommand cmd = new SqlCommand("UpdateStudentData", con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Id", id);
 
@@ -142,9 +133,9 @@ namespace SchoolBookManagementRecord.Controllers
                                 Id = Convert.ToInt32(rdr["Id"]),
                                 FirstName = Convert.ToString(rdr["FirstName"]),
                                 LastName = Convert.ToString(rdr["LastName"]),
-                                FatherName = Convert.ToString(rdr["FathersName"]),
+                                FatherName = Convert.ToString(rdr["FatherName"]),
                                 MotherName = Convert.ToString(rdr["MotherName"]),
-                                Gender = (GenderType)Enum.Parse(typeof(GenderType), Convert.ToString(rdr["StudentGender"])),
+                                Gender = (GenderType)Enum.Parse(typeof(GenderType), Convert.ToString(rdr["Gender"])),
                                 Address = Convert.ToString(rdr["Address"]),
                                 Class = (ClassName)Enum.Parse(typeof(ClassName), Convert.ToString(rdr["Class"]))
                             };
@@ -154,7 +145,7 @@ namespace SchoolBookManagementRecord.Controllers
 
                 if (objStudent == null)
                 {
-                    return RedirectToAction("Record");
+                    return RedirectToAction("ViewStudent");
                 }
 
                 return View("UpdateStudentData", objStudent);
@@ -163,6 +154,7 @@ namespace SchoolBookManagementRecord.Controllers
             {
                 return View(ex.Message);
             }
+     
         }
         #endregion
 
@@ -177,16 +169,7 @@ namespace SchoolBookManagementRecord.Controllers
                     SqlCommand cmd = new SqlCommand("AddStudentMain", con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", pStudent.Id);
-                    byte[] photoBytes = null;
-                    //if (pStudent.PhotoFile != null && pStudent.PhotoFile.ContentLength > 0)
-                    //{
-                    //    using (var binaryReader = new BinaryReader(pStudent.PhotoFile.InputStream))
-                    //    {
-                    //        photoBytes = binaryReader.ReadBytes(pStudent.PhotoFile.ContentLength);
-                    //    }
-                    //}
-                    //cmd.Parameters.AddWithValue("@PhotoStore", pStudent.photoBytes);
-                    //cmd.Parameters.AddWithValue("@FirstName", pStudent.FirstName);
+                    cmd.Parameters.AddWithValue("@FirstName", pStudent.FirstName);
                     cmd.Parameters.AddWithValue("@LastName", pStudent.LastName);
                     cmd.Parameters.AddWithValue("@Class", pStudent.Class);
                     cmd.Parameters.AddWithValue("@Gender", pStudent.Gender);
@@ -239,11 +222,6 @@ namespace SchoolBookManagementRecord.Controllers
                             {
                                 objStudent.Class = classname;
                             }
-                           // byte[] photodata = (byte[])rdr["PhotoStore"];
-                           // string base64StringPhoto = Convert.ToBase64String(photodata);
-
-                            //   objStudent.PhotoBase64 = base64StringPhoto;
-
                             ltrStudents.Add(objStudent);
                         }
                     }

@@ -8,11 +8,8 @@ namespace SchoolBookManagementRecord.Models
 {
     public class Student
     {
-        internal object photoBytes;
-
+      
         [Required(ErrorMessage ="Please Enter the SR NO")]
-        [MaxLength(4)]
-        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage ="Please Enter your FirstName")]
@@ -33,7 +30,7 @@ namespace SchoolBookManagementRecord.Models
         public string FatherName { get; set; }
 
         [Required(ErrorMessage ="Please Enter your PhoneNumber")]
-        [MaxLength(13)]
+
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage ="Please Enter your Mother's Name")]
@@ -41,11 +38,6 @@ namespace SchoolBookManagementRecord.Models
 
         [Required(ErrorMessage = "Please Enter the Remarks")]
         public string Remarks { get; set; }
-
-       [Required(ErrorMessage = "Please select a file.")]
-       public HttpPostedFileBase PhotoFile { get; set; }
-        public string PhotoBase64 { get; internal set; }
-
     }
     public enum ClassName
     {

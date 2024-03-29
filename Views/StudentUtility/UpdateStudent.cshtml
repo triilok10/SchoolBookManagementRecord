@@ -34,10 +34,7 @@
                     <td> @item.Class</td>
                     <td> @item.Gender</td>
                     <td> @item.Address</td>
-                    <td> @item.PhoneNumber</td>
-                    <td> @item.Remarks </td>
-                    <td> @item.PhotoBase64 </td> 
-                    <td>  <a href="@Url.Action("GetUpdateRecordMain","Home" , new {id = item.Id})"> Edit </a> </td>
+                    <td> <a href="@Url.Action("GetUpdateRecordMain","Home" , new {id = item.Id})"> Edit </a> </td>
                 </tr>
             }
         </tbody>

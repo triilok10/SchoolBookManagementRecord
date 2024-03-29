@@ -8,36 +8,38 @@ namespace SchoolBookManagementRecord.Models
 {
     public class Student
     {
-      
-        [Required(ErrorMessage ="Please Enter the SR NO")]
+
+        [Required(ErrorMessage = "Please Enter the SR NO")]
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="Please Enter your FirstName")]
+        [Required(ErrorMessage = "Please Enter your FirstName")]
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
 
-        [Required(ErrorMessage ="Please Select your Class")]
+        [Required(ErrorMessage = "Please Select your Class")]
         public ClassName Class { get; set; }
 
-        [Required(ErrorMessage ="Please Select your Gender")]
+        [Required(ErrorMessage = "Please Select your Gender")]
         public GenderType Gender { get; set; }
 
-        [Required(ErrorMessage ="Please Enter your Address")]
+        [Required(ErrorMessage = "Please Enter your Address")]
         public string Address { get; set; }
 
-        [Required(ErrorMessage ="Please Enter your Father's Name")]
+        [Required(ErrorMessage = "Please Enter your Father's Name")]
         public string FatherName { get; set; }
 
-        [Required(ErrorMessage ="Please Enter your PhoneNumber")]
-
-        public string PhoneNumber { get; set; }
-
-        [Required(ErrorMessage ="Please Enter your Mother's Name")]
+        [Required(ErrorMessage = "Please Enter your Mother's Name")]
         public string MotherName { get; set; }
 
         [Required(ErrorMessage = "Please Enter the Remarks")]
         public string Remarks { get; set; }
+
+        [Required(ErrorMessage = "Please Enter the Email")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "Please Enter the Mobile")]
+        public string Mobile { get; set; }
     }
     public enum ClassName
     {

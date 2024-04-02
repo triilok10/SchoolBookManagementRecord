@@ -42,6 +42,7 @@ namespace SchoolBookManagementRecord.Controllers
                             objStudent.MotherName = Convert.ToString(rdr["MotherName"]);
                             objStudent.Address = Convert.ToString(rdr["Address"]);
                             objStudent.Remarks = Convert.ToString(rdr["Remarks"]);
+                            objStudent.Mobile = Convert.ToInt32(rdr["Mobile"]);
 
                             if (Enum.TryParse<GenderType>(Convert.ToString(rdr["Gender"]), out GenderType gender))
                             {
@@ -88,6 +89,7 @@ namespace SchoolBookManagementRecord.Controllers
                             objStudent.MotherName = Convert.ToString(rdr["MotherName"]);
                             objStudent.Address = Convert.ToString(rdr["Address"]);
                             objStudent.Remarks = Convert.ToString(rdr["Remarks"]);
+                            objStudent.Mobile = Convert.ToInt32(rdr["Mobile"]);
                             if (Enum.TryParse<GenderType>(Convert.ToString(rdr["Gender"]), out GenderType gender))
                             {
                                 objStudent.Gender = gender;
@@ -137,7 +139,7 @@ namespace SchoolBookManagementRecord.Controllers
                                 Class = (ClassName)Enum.Parse(typeof(ClassName), Convert.ToString(rdr["Class"])),
                                 Remarks = Convert.ToString(rdr["Remarks"]),
                                 Email = Convert.ToString(rdr["Email"]),
-                                Mobile = Convert.ToString(rdr["Mobile"])
+                                Mobile = Convert.ToInt32(rdr["Mobile"])
                             };
                         }
                     }
@@ -157,6 +159,7 @@ namespace SchoolBookManagementRecord.Controllers
         #endregion 
 
         #region"Update Student Post"
+        [HttpPost]
         public ActionResult UpdateStudentData(Student std)
         {
             try
@@ -168,13 +171,17 @@ namespace SchoolBookManagementRecord.Controllers
                     cmd.Parameters.AddWithValue("@ID", std.Id);
                     cmd.Parameters.AddWithValue("@FirstName", std.FirstName);
                     cmd.Parameters.AddWithValue("@LastName", std.LastName);
-                    cmd.Parameters.AddWithValue("@FathersName", std.FatherName);
+                    cmd.Parameters.AddWithValue("@FatherName", std.FatherName);
                     cmd.Parameters.AddWithValue("@MotherName", std.MotherName);
                     cmd.Parameters.AddWithValue("@Class", std.Class);
                     cmd.Parameters.AddWithValue("@Gender", std.Gender);
                     cmd.Parameters.AddWithValue("@Remarks", std.Remarks);
                     cmd.Parameters.AddWithValue("@Mobile", std.Mobile);
                     cmd.Parameters.AddWithValue("@Email", std.Email);
+                    cmd.Parameters.AddWithValue("@Address", std.Address);
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
                 }
 
 
@@ -206,6 +213,8 @@ namespace SchoolBookManagementRecord.Controllers
                     cmd.Parameters.AddWithValue("@MotherName", pStudent.MotherName);
                     cmd.Parameters.AddWithValue("@Address", pStudent.Address);
                     cmd.Parameters.AddWithValue("@Remarks", pStudent.Remarks);
+                    cmd.Parameters.AddWithValue("@Email",pStudent.Email);
+                    cmd.Parameters.AddWithValue("@Mobile",pStudent.Mobile);
                     con.Open();
                     cmd.ExecuteNonQuery();
                 }

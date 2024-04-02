@@ -1,12 +1,12 @@
 ﻿@model SchoolBookManagementRecord.Models.Student
 
 <div class="container">
-    <br/>
+    <br />
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h2 class="text-center text-capitalize">Add Students</h2>
             <br />
-            @using (Html.BeginForm("CreateStudentData", "StudentUtility", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+            @using (Html.BeginForm("CreateStudentData", "StudentUtility", FormMethod.Post))
             {<div class="d-flex justify-content-evenly align-items-center">
                     <div style="width:400px; padding: 10px 5px">
                         <div class="form-group">
@@ -30,13 +30,11 @@
                             @Html.TextBoxFor(m => m.Address, new { @class = "form-control", required = "required" })
                         </div>
                     </div>
-                    <div  style="width:400px ; padding: 12px 5px">
-                        @*<div class="form-group">
-                            @Html.Label("Photo :", new { @class = "control-label" })
-                            <div class="custom-file">
-                                @Html.TextBoxFor(m => m.PhotoBase64, new { @class = "custom-file-input", required = "required", type = "file" })
-                            </div>
-                        </div>*@
+                    <div style="width:400px ; padding: 12px 5px">
+                        <div class="form-group">
+                            @Html.Label("Email :", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", required = "required" })
+                        </div>
                         <div class="form-group">
                             @Html.Label("Last Name :", new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", required = "required" })
@@ -55,7 +53,11 @@
                         </div>
                     </div>
                 </div>
-                <br/>
+                <div class="form-group" style="width:400px; padding: 0px 5px">
+                    @Html.Label("Phone Number :", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", required = "required" })
+                </div>
+                <br />
                 <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
             }
         </div>

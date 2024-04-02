@@ -24,7 +24,7 @@
                     <td> @item.LastName </td>
                     <td> @item.Class</td>
                     <td> @item.Remarks </td>
-                    <td>@Html.ActionLink("Delete", "DeleteStudentData", new { id = item.Id, onclick = "return confirm('Are you sure to delete this data?')" })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteStudentData", new { id = item.Id})</td>
                 </tr>
             }
         </tbody>

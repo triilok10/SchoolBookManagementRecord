@@ -9,7 +9,7 @@ namespace SchoolBookManagementRecord.Models
     public class Student
     {
 
-        [Required(ErrorMessage = "Please Enter the SR NO")]
+
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please Enter your FirstName")]
@@ -39,7 +39,7 @@ namespace SchoolBookManagementRecord.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please Enter the Mobile")]
-        public string Mobile { get; set; }
+        public int Mobile { get; set; }
     }
     public enum ClassName
     {

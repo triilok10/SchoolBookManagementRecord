@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <h2 class="text-center text-capitalize">Change the Data here of a Student</h2>
             <br />
-            @using (Html.BeginForm("UpdateStudentData", "StudentUtility", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+            @using (Html.BeginForm("UpdateStudentData", "StudentUtility", FormMethod.Post))
             {<div class="d-flex justify-content-evenly align-items-center">
                     <div style="width:400px; padding: 10px 5px">
                         <div class="form-group">
@@ -29,9 +29,14 @@
                             @Html.Label("Address :", new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.Address, new { @class = "form-control", required = "required" })
                         </div>
+                        <div class="form-group">
+                            @Html.Label("Moblie :", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", required = "required" })
+                        </div>
                     </div>
                     <div style="width:400px ; padding: 12px 5px">
-                      
+                        @Html.Label("Mobile :", new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", required = "required" })
                         <div class="form-group">
                             @Html.Label("Last Name :", new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", required = "required" })
@@ -47,6 +52,10 @@
                         <div class="form-group">
                             @Html.Label("Remarks :", new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control", required = "required" })
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Email :", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", required = "required" })
                         </div>
                     </div>
                 </div>

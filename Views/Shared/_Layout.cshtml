@@ -10,7 +10,7 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse" style="height:100vh">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse" style="height:110vh; position:sticky">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
 
@@ -18,16 +18,16 @@
                             @Html.ActionLink("School Management ", "Index", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("DashBoard", "DashBoard", "Home", new { area = "" }, new { @class=  "nav-link text-white p-3" })
+                            @Html.ActionLink("DashBoard", "DashBoard", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Finance", "Accounts", "Home", new { area = "" },new { @class = "nav-link text-white p-3" })
+                            @Html.ActionLink("Finance", "Accounts", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Students", "Students", "Home", new { area = "" }, new {  @class = "nav-link text-white p-3" })
+                            @Html.ActionLink("Students", "Students", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Teachers", "Teachers", "Home", new { area = "" }, new {  @class = "nav-link text-white p-3" })
+                            @Html.ActionLink("Teachers", "Teachers", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
                         <li class="nav-item">
                             @Html.ActionLink("Notices", "Notices", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
@@ -36,13 +36,16 @@
                             @Html.ActionLink("Attendance", "Attendance", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Classes", "Classes", "Home", new { area = "" },new {  @class = "nav-link text-white p-3" })
+                            @Html.ActionLink("Classes", "Classes", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Transport", "Transport", "Home", new { area = "" },new { @class = "nav-link text-white p-3" })
+                            @Html.ActionLink("Transport", "Transport", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
                         <li class="nav-item">
                             @Html.ActionLink("Departments", "Departments", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("LogOut", "LogOut", "Log", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
                     </ul>
                 </div>

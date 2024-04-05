@@ -22,6 +22,7 @@ namespace SchoolBookManagementRecord.Controllers
         public ActionResult ViewStudent()
         {
             List<Student> ltrStudents = new List<Student>();
+            TempData["TotalStudents"] = ltrStudents.Count;
             try
             {
                 using (SqlConnection con = new SqlConnection(CS))
@@ -63,6 +64,7 @@ namespace SchoolBookManagementRecord.Controllers
             }
             return View(ltrStudents);
         }
+      
         #endregion
 
         #region "Update  View GET"
@@ -228,6 +230,7 @@ namespace SchoolBookManagementRecord.Controllers
             return RedirectToAction("ViewStudent");
         }
         #endregion
+
 
         #region "Add Student"
         public ActionResult AddStudent()

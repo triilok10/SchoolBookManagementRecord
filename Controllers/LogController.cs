@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace SchoolBookManagementRecord.Controllers
 {
@@ -21,19 +22,20 @@ namespace SchoolBookManagementRecord.Controllers
             {
                 if (pLog.Username == "Trilok" && pLog.Password == "Trilok8058")
                 {
-                    ViewBag.Message = "Successfully Login";
-                   return RedirectToAction("Index", "Home");
+                    TempData["Message"] = "Successfully Logged Out!";
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ViewBag.Message = "Please Enter Correct Username and Password";
+                    TempData["Message"] = "Please Enter Correct Username and Password";
+                    return RedirectToAction("LogInGet", "Log");
                 }
             }
             else
             {
+                TempData["Message"] = "Invalid User, Please Check Your Details.";
                 return RedirectToAction("LogInGet", "Log");
             }
-            return RedirectToAction("LogInGet", "Log");
         }
         public ActionResult LogOut()
         {

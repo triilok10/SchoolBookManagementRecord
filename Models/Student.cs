@@ -10,8 +10,8 @@ namespace SchoolBookManagementRecord.Models
     public class Student
     {
 
-
         public int Id { get; set; }
+        public HttpPostedFileBase Filepath { get; set; }
 
         [Required(ErrorMessage = "Please Enter your FirstName")]
         public string FirstName { get; set; }
@@ -40,7 +40,7 @@ namespace SchoolBookManagementRecord.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please Enter the Mobile")]
-        public int Mobile { get; set; }
+        public string Mobile { get; set; }
 
 
     }

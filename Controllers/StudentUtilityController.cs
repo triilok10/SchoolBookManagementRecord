@@ -22,7 +22,6 @@ namespace SchoolBookManagementRecord.Controllers
         public ActionResult ViewStudent()
         {
             List<Student> ltrStudents = new List<Student>();
-            TempData["TotalStudents"] = ltrStudents.Count;
             try
             {
                 using (SqlConnection con = new SqlConnection(CS))
@@ -42,8 +41,9 @@ namespace SchoolBookManagementRecord.Controllers
                             objStudent.FatherName = Convert.ToString(rdr["FatherName"]);
                             objStudent.MotherName = Convert.ToString(rdr["MotherName"]);
                             objStudent.Address = Convert.ToString(rdr["Address"]);
-                            objStudent.Remarks = Convert.ToString(rdr["Remarks"]);
-                            objStudent.Mobile = Convert.ToInt32(rdr["Mobile"]);
+                            objStudent.Remarks = Convert.ToString(rdr["Remark"]);
+                            objStudent.Mobile = Convert.ToString(rdr["Mobile"]);
+                            //objStudent.Filepath = Convert.ToString(rdr["Filepath"]);
 
                             if (Enum.TryParse<GenderType>(Convert.ToString(rdr["Gender"]), out GenderType gender))
                             {
@@ -84,14 +84,14 @@ namespace SchoolBookManagementRecord.Controllers
                         {
                             Student objStudent = new Student();
 
-                            objStudent.Id = Convert.ToInt32(rdr["ID"]);
+                            //objStudent.Id = Convert.ToInt32(rdr["ID"]);
                             objStudent.FirstName = Convert.ToString(rdr["FirstName"]);
                             objStudent.LastName = Convert.ToString(rdr["LastName"]);
                             objStudent.FatherName = Convert.ToString(rdr["FatherName"]);
                             objStudent.MotherName = Convert.ToString(rdr["MotherName"]);
                             objStudent.Address = Convert.ToString(rdr["Address"]);
                             objStudent.Remarks = Convert.ToString(rdr["Remarks"]);
-                            objStudent.Mobile = Convert.ToInt32(rdr["Mobile"]);
+                            objStudent.Mobile = Convert.ToString(rdr["Mobile"]);
                             if (Enum.TryParse<GenderType>(Convert.ToString(rdr["Gender"]), out GenderType gender))
                             {
                                 objStudent.Gender = gender;
@@ -142,7 +142,7 @@ namespace SchoolBookManagementRecord.Controllers
                                 Class = (ClassName)Enum.Parse(typeof(ClassName), Convert.ToString(rdr["Class"])),
                                 Remarks = Convert.ToString(rdr["Remarks"]),
                                 Email = Convert.ToString(rdr["Email"]),
-                                Mobile = Convert.ToInt32(rdr["Mobile"])
+                                Mobile = Convert.ToString(rdr["Mobile"])
                             };
                         }
                     }
@@ -208,6 +208,7 @@ namespace SchoolBookManagementRecord.Controllers
                     SqlCommand cmd = new SqlCommand("AddStudentMain", con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", pStudent.Id);
+                    cmd.Parameters.AddWithValue("@Filepath", pStudent.Filepath);
                     cmd.Parameters.AddWithValue("@FirstName", pStudent.FirstName);
                     cmd.Parameters.AddWithValue("@LastName", pStudent.LastName);
                     cmd.Parameters.AddWithValue("@Class", pStudent.Class);
@@ -230,7 +231,11 @@ namespace SchoolBookManagementRecord.Controllers
             return RedirectToAction("ViewStudent");
         }
         #endregion
-
+        [HttpPost]
+        public ActionResult CreateStudentData(HttpPostedFileBase File)
+        {
+            return View();
+        }
 
         #region "Add Student"
         public ActionResult AddStudent()

@@ -4,13 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse" style="height:110vh; position:sticky">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse" style="height:100%; position:fixed">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
 
@@ -24,7 +25,7 @@
                             @Html.ActionLink("Finance", "Accounts", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Students", "Students", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
+                            @Html.ActionLink("Student", "Students", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
                         <li class="nav-item">
                             @Html.ActionLink("Teachers", "Teachers", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
@@ -39,9 +40,6 @@
                             @Html.ActionLink("Classes", "Classes", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Transport", "Transport", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
-                        </li>
-                        <li class="nav-item">
                             @Html.ActionLink("Departments", "Departments", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
                         <li class="nav-item">
@@ -50,8 +48,6 @@
                     </ul>
                 </div>
             </nav>
-
-
             <!-- Main content area -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="background-color:lightgrey">
                 @RenderBody()
@@ -62,8 +58,16 @@
             </main>
         </div>
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/jquery-3.7.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tbJquerytable').DataTable({
+                paging: true
+            });
+        });
+    </script>
 </body>
 </html>

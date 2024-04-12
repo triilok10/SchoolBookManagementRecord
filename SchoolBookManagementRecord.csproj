@@ -220,6 +220,7 @@
     <Content Include="obj\Debug\SchoolBookManagementRecord.csproj.AssemblyReference.cache" />
     <Content Include="obj\Debug\SchoolBookManagementRecord.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Release\SchoolBookManagementRecord.csproj.AssemblyReference.cache" />
+    <Content Include="libman.json" />
     <None Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1.js" />
     <Content Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1.min.js" />
@@ -457,12 +458,14 @@
     <Content Include="packages\Newtonsoft.Json.13.0.3\README.md" />
     <Content Include="packages\WebGrease.1.6.0\.signature.p7s" />
     <Content Include="packages\WebGrease.1.6.0\WebGrease.1.6.0.nupkg" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.1.js" />
+    <Content Include="Scripts\jquery-3.7.1.min.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -487,7 +490,6 @@
     <Content Include="Views\Home\Notices.cshtml" />
     <Content Include="Views\Home\Attendance.cshtml" />
     <Content Include="Views\Home\Classes.cshtml" />
-    <Content Include="Views\Home\Transport.cshtml" />
     <Content Include="Views\Home\Departments.cshtml" />
     <Content Include="Views\StudentUtility\ViewStudent.cshtml" />
     <Content Include="Views\StudentUtility\UpdateStudent.cshtml" />
@@ -496,6 +498,8 @@
     <Content Include="Views\StudentUtility\UpdateChangeData.cshtml" />
     <Content Include="Views\Log\LogInGet.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -525,8 +529,6 @@
     <Content Include="Scripts\bootstrap.esm.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

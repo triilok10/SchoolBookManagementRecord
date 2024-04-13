@@ -84,13 +84,13 @@ namespace SchoolBookManagementRecord.Controllers
                         {
                             Student objStudent = new Student();
 
-                            //objStudent.Id = Convert.ToInt32(rdr["ID"]);
+                            objStudent.Id = Convert.ToInt32(rdr["ID"]);
                             objStudent.FirstName = Convert.ToString(rdr["FirstName"]);
                             objStudent.LastName = Convert.ToString(rdr["LastName"]);
                             objStudent.FatherName = Convert.ToString(rdr["FatherName"]);
                             objStudent.MotherName = Convert.ToString(rdr["MotherName"]);
                             objStudent.Address = Convert.ToString(rdr["Address"]);
-                            objStudent.Remarks = Convert.ToString(rdr["Remarks"]);
+                            objStudent.Remarks = Convert.ToString(rdr["Remark"]);
                             objStudent.Mobile = Convert.ToString(rdr["Mobile"]);
                             if (Enum.TryParse<GenderType>(Convert.ToString(rdr["Gender"]), out GenderType gender))
                             {
@@ -140,7 +140,7 @@ namespace SchoolBookManagementRecord.Controllers
                                 Gender = (GenderType)Enum.Parse(typeof(GenderType), Convert.ToString(rdr["Gender"])),
                                 Address = Convert.ToString(rdr["Address"]),
                                 Class = (ClassName)Enum.Parse(typeof(ClassName), Convert.ToString(rdr["Class"])),
-                                Remarks = Convert.ToString(rdr["Remarks"]),
+                                Remarks = Convert.ToString(rdr["Remark"]),
                                 Email = Convert.ToString(rdr["Email"]),
                                 Mobile = Convert.ToString(rdr["Mobile"])
                             };
@@ -178,7 +178,7 @@ namespace SchoolBookManagementRecord.Controllers
                     cmd.Parameters.AddWithValue("@MotherName", std.MotherName);
                     cmd.Parameters.AddWithValue("@Class", std.Class);
                     cmd.Parameters.AddWithValue("@Gender", std.Gender);
-                    cmd.Parameters.AddWithValue("@Remarks", std.Remarks);
+                    cmd.Parameters.AddWithValue("@Remark", std.Remarks);
                     cmd.Parameters.AddWithValue("@Mobile", std.Mobile);
                     cmd.Parameters.AddWithValue("@Email", std.Email);
                     cmd.Parameters.AddWithValue("@Address", std.Address);
@@ -229,6 +229,7 @@ namespace SchoolBookManagementRecord.Controllers
                     cmd.Parameters.AddWithValue("@Mobile", pStudent.Mobile);
                     con.Open();
                     cmd.ExecuteNonQuery();
+                    TempData["Message"] = "User Record " + pStudent.FirstName + " successfully saved!";
                 }
             }
             catch (Exception ex)
@@ -269,7 +270,7 @@ namespace SchoolBookManagementRecord.Controllers
                             objStudent.Id = Convert.ToInt32(rdr["ID"]);
                             objStudent.FirstName = Convert.ToString(rdr["FirstName"]);
                             objStudent.LastName = Convert.ToString(rdr["LastName"]);
-                            objStudent.Remarks = Convert.ToString(rdr["Remarks"]);
+                            objStudent.Remarks = Convert.ToString(rdr["Remark"]);
                             if (Enum.TryParse<ClassName>(Convert.ToString(rdr["Class"]), out ClassName classname))
                             {
                                 objStudent.Class = classname;

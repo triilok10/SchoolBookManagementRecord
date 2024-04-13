@@ -65,7 +65,13 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#tbJquerytable').DataTable({
-                paging: true
+                //"processing": true,
+                //"serverSide": true,
+                //"filter": true,
+                paging: true,
+                responsive: true,
+                scrollY: "400px",
+                
             });
         });
     </script>

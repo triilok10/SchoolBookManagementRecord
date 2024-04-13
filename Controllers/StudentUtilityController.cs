@@ -64,7 +64,7 @@ namespace SchoolBookManagementRecord.Controllers
             }
             return View(ltrStudents);
         }
-      
+
         #endregion
 
         #region "Update  View GET"
@@ -95,7 +95,7 @@ namespace SchoolBookManagementRecord.Controllers
                             if (Enum.TryParse<GenderType>(Convert.ToString(rdr["Gender"]), out GenderType gender))
                             {
                                 objStudent.Gender = gender;
-                                }
+                            }
                             if (Enum.TryParse<ClassName>(Convert.ToString(rdr["Class"]), out ClassName classname))
                             {
                                 objStudent.Class = classname;
@@ -199,16 +199,24 @@ namespace SchoolBookManagementRecord.Controllers
 
         #region "Create Student POST"
         [HttpPost]
-        public ActionResult CreateStudentData(Student pStudent)
+        public ActionResult CreateStudentData(Student pStudent, HttpPostedFileBase File)
         {
+
+           
             try
             {
+                if (File != null && File.ContentLength > 0)
+                {
+                    string FileName = Path.GetFileName(File.FileName);
+                    string FilePathData = Path.Combine(Server.MapPath("~/App_Data/UserImages/"), FileName);
+                    File.SaveAs(FilePathData);
+
+                }
                 using (SqlConnection con = new SqlConnection(CS))
                 {
                     SqlCommand cmd = new SqlCommand("AddStudentMain", con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", pStudent.Id);
-                    cmd.Parameters.AddWithValue("@Filepath", pStudent.Filepath);
+                    cmd.Parameters.AddWithValue("@Filepath", "~/App_Data/UserImages/");
                     cmd.Parameters.AddWithValue("@FirstName", pStudent.FirstName);
                     cmd.Parameters.AddWithValue("@LastName", pStudent.LastName);
                     cmd.Parameters.AddWithValue("@Class", pStudent.Class);
@@ -216,9 +224,9 @@ namespace SchoolBookManagementRecord.Controllers
                     cmd.Parameters.AddWithValue("@FatherName", pStudent.FatherName);
                     cmd.Parameters.AddWithValue("@MotherName", pStudent.MotherName);
                     cmd.Parameters.AddWithValue("@Address", pStudent.Address);
-                    cmd.Parameters.AddWithValue("@Remarks", pStudent.Remarks);
-                    cmd.Parameters.AddWithValue("@Email",pStudent.Email);
-                    cmd.Parameters.AddWithValue("@Mobile",pStudent.Mobile);
+                    cmd.Parameters.AddWithValue("@Remark", pStudent.Remarks);
+                    cmd.Parameters.AddWithValue("@Email", pStudent.Email);
+                    cmd.Parameters.AddWithValue("@Mobile", pStudent.Mobile);
                     con.Open();
                     cmd.ExecuteNonQuery();
                 }
@@ -229,13 +237,10 @@ namespace SchoolBookManagementRecord.Controllers
             }
 
             return RedirectToAction("ViewStudent");
+
         }
         #endregion
-        [HttpPost]
-        public ActionResult CreateStudentData(HttpPostedFileBase File)
-        {
-            return View();
-        }
+
 
         #region "Add Student"
         public ActionResult AddStudent()

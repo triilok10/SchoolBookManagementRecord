@@ -11,7 +11,6 @@ namespace SchoolBookManagementRecord.Models
     {
 
         public int Id { get; set; }
-        public HttpPostedFileBase Filepath { get; set; }
 
         [Required(ErrorMessage = "Please Enter your FirstName")]
         public string FirstName { get; set; }
@@ -41,6 +40,9 @@ namespace SchoolBookManagementRecord.Models
 
         [Required(ErrorMessage = "Please Enter the Mobile")]
         public string Mobile { get; set; }
+
+        [Required(ErrorMessage ="Please Select the Profile Photo")]
+        public string Filepath { get; set; }
 
 
     }

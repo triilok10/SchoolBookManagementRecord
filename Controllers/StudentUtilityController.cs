@@ -43,7 +43,7 @@ namespace SchoolBookManagementRecord.Controllers
                             objStudent.Address = Convert.ToString(rdr["Address"]);
                             objStudent.Remarks = Convert.ToString(rdr["Remark"]);
                             objStudent.Mobile = Convert.ToString(rdr["Mobile"]);
-                            //objStudent.Filepath = Convert.ToString(rdr["Filepath"]);
+                            objStudent.Filepath = Convert.ToString(rdr["Filepath"]);
 
                             if (Enum.TryParse<GenderType>(Convert.ToString(rdr["Gender"]), out GenderType gender))
                             {
@@ -208,15 +208,15 @@ namespace SchoolBookManagementRecord.Controllers
                 if (File != null && File.ContentLength > 0)
                 {
                     string FileName = Path.GetFileName(File.FileName);
-                    string FilePathData = Path.Combine(Server.MapPath("~/App_Data/UserImages/"), FileName);
+                    string FilePathData = Path.Combine(Server.MapPath("~/App_Data/UserImages/" ), FileName);
                     File.SaveAs(FilePathData);
-
+                    pStudent.Filepath = FileName;
                 }
                 using (SqlConnection con = new SqlConnection(CS))
                 {
                     SqlCommand cmd = new SqlCommand("AddStudentMain", con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Filepath", "~/App_Data/UserImages/");
+                    cmd.Parameters.AddWithValue("@Filepath", pStudent.Filepath);
                     cmd.Parameters.AddWithValue("@FirstName", pStudent.FirstName);
                     cmd.Parameters.AddWithValue("@LastName", pStudent.LastName);
                     cmd.Parameters.AddWithValue("@Class", pStudent.Class);

@@ -14,6 +14,17 @@
         border: 1px solid black;
         width: 500px;
         height: 50vh;
+        background-color: #CDE6AC;
+    }
+    .nameIntro {
+        
+        font-size: 21px;
+        width: 100%;
+        padding: 14px;
+        justify-content:space-evenly;
+    }
+    .nameIntroHalf {
+        width: 50%;
     }
 </style>
 <!DOCTYPE html>
@@ -27,13 +38,31 @@
     <br />
    
     <div class="container-md centerDocAlign">
-        <div class="centerDoc" id="studentContainer">
-          
-                <div class="d-inline-flex">
-                    <div>FirstName : @Model.FirstName</div>
-                    <div>LastName : @Model.LastName</div>
+        <div class="centerDoc">
+            <div class="d-inline-flex nameIntro" style="border-bottom: 1px solid black">
+                Trilok School
+            </div>
+            <div class="d-inline-flex nameIntro">
+                <div class="nameIntroHalf">FirstName : @Model.FirstName</div>
+                <div class="nameIntroHalf">LastName : @Model.LastName</div>
+            </div>
+            <div class="d-inline-flex nameIntro">
+                <div class="nameIntroHalf">Class : @Model.Class</div>
+                <div class="nameIntroHalf">Gender : @Model.Gender</div>
+            </div>
+            <div class="d-inline-flex nameIntro">
+                <div class="nameIntroHalf">Mobile : @Model.Mobile</div>
+                <div class="nameIntroHalf">Address : @Model.Address</div>
+            </div>
+            <div class="d-inline-flex nameIntro">
+                <div class="nameIntroHalf"></div>
+                <div class="nameIntroHalf">
+                    @if (!string.IsNullOrEmpty(Model.Filepath))
+                    {
+                        <img src="@Url.Content("~/App_Data/UserImages/" + Model.Filepath)" alt="Student Image" style="max-width: 100px; max-height: 100px;" />
+                    }
                 </div>
-            
+            </div>
         </div>
     </div>
 

@@ -3,16 +3,27 @@
 <div class="container">
     <br />
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <h2 class="text-center text-capitalize">Change the Data here of a Student</h2>
+        <div class="col-md-6" style="padding:23px;">
+            <h2 class="text-center text-capitalize">Update Students</h2>
             <br />
-            @using (Html.BeginForm("UpdateStudentData", "StudentUtility", FormMethod.Post))
-            {<div class="d-flex justify-content-evenly align-items-center">
-                    <div style="width:400px; padding: 10px 5px">
+            @using (Html.BeginForm("UpdateStudentData", "StudentUtility", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="d-flex justify-content-evenly align-items-center">
+                    <div style="width: 50%;">
                         <div class="form-group">
-                            @Html.Label("SR No :", new { @class = "control-label" })
-                            @Html.TextBoxFor(m => m.Id, new { @class = "form-control", required = "required" })
+                            <div>@Html.Label("Photo :", new { @class = "control-label" })</div>
+                            <input type="file" name="File" />
+
                         </div>
+                    </div>
+                    <div style="width: 50%; ">
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.Id, new { @class = "form-control" , type="hidden"})
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-evenly align-items-center">
+                    <div style="width: 50%; ">
                         <div class="form-group">
                             @Html.Label("First Name :", new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", required = "required" })
@@ -30,13 +41,11 @@
                             @Html.TextBoxFor(m => m.Address, new { @class = "form-control", required = "required" })
                         </div>
                         <div class="form-group">
-                            @Html.Label("Moblie :", new { @class = "control-label" })
+                            @Html.Label("Phone Number :", new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", required = "required" })
                         </div>
                     </div>
-                    <div style="width:400px ; padding: 12px 5px">
-                        @Html.Label("Mobile :", new { @class = "control-label" })
-                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", required = "required" })
+                    <div style="width:50% ;">
                         <div class="form-group">
                             @Html.Label("Last Name :", new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
@@ -50,18 +59,30 @@
                             @Html.TextBoxFor(m => m.MotherName, new { @class = "form-control", required = "required" })
                         </div>
                         <div class="form-group">
-                            @Html.Label("Remarks :", new { @class = "control-label" })
-                            @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control", required = "required" })
-                        </div>
-                        <div class="form-group">
                             @Html.Label("Email :", new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control", required = "required" })
                         </div>
+                        <div class="form-group">
+                            @Html.Label("Remarks :", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control", required = "required" })
+                        </div>
                     </div>
                 </div>
+
                 <br />
-                <div class="text-center"><button type="submit" class="btn btn-primary"> Update </button></div>
+                <div class="d-flex justify-content-evenly align-items-center">
+                    <div style="width: 50%;">
+                        <div class="form-group">
+                        </div>
+                    </div>
+                    <div style="width: 50%;display:flex;justify-content:end ">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
             }
+
         </div>
     </div>
 </div>

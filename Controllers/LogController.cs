@@ -22,7 +22,6 @@ namespace SchoolBookManagementRecord.Controllers
             {
                 if (pLog.Username == "Trilok" && pLog.Password == "Trilok8058")
                 {
-                    TempData["Message"] = "Successfully Logged Out!";
                     return RedirectToAction("Index", "Home");
                 }
                 else

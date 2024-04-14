@@ -23,7 +23,7 @@
                 <th> Address </th>
                 <th> Remarks </th>
                 <th> Mobile </th>
-                @*<th> File </th>*@
+                <th> File </th>
             </tr>
         </thead>
         <tbody>
@@ -40,12 +40,12 @@
                     <td> @item.Address</td>
                     <td> @item.Remarks </td>
                     <td> @item.Mobile</td>
-                    @*<td>
+                    <td>
                         @if (!string.IsNullOrEmpty(item.Filepath))
                         {
                             <img src="@Url.Content("~/App_Data/UserImages/" + item.Filepath)" alt="Student Image" style="max-width: 300px; max-height: 300px;" />
                         }
-                    </td>*@
+                    </td>
                 </tr>
             }
         </tbody>

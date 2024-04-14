@@ -163,36 +163,42 @@ namespace SchoolBookManagementRecord.Controllers
 
         #region"Update Student Post"
         [HttpPost]
-        public ActionResult UpdateStudentData(Student std)
+        public ActionResult UpdateStudentData(Student std, HttpPostedFileBase File)
         {
             try
             {
+                if (File != null && File.ContentLength > 0)
+                {
+                    string FileName = Path.GetFileName(File.FileName);
+                    string FilePathData = Path.Combine(Server.MapPath("~/App_Data/UserImages/"), FileName);
+                    File.SaveAs(FilePathData);
+                    std.Filepath = FileName;
+                }
                 using (SqlConnection con = new SqlConnection(CS))
                 {
                     SqlCommand cmd = new SqlCommand("UpdateStudentData", con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", std.Id);
+                    cmd.Parameters.AddWithValue("@Filepath", std.Filepath);
                     cmd.Parameters.AddWithValue("@FirstName", std.FirstName);
                     cmd.Parameters.AddWithValue("@LastName", std.LastName);
-                    cmd.Parameters.AddWithValue("@FatherName", std.FatherName);
-                    cmd.Parameters.AddWithValue("@MotherName", std.MotherName);
                     cmd.Parameters.AddWithValue("@Class", std.Class);
                     cmd.Parameters.AddWithValue("@Gender", std.Gender);
-                    cmd.Parameters.AddWithValue("@Remark", std.Remarks);
-                    cmd.Parameters.AddWithValue("@Mobile", std.Mobile);
-                    cmd.Parameters.AddWithValue("@Email", std.Email);
+                    cmd.Parameters.AddWithValue("@FatherName", std.FatherName);
+                    cmd.Parameters.AddWithValue("@MotherName", std.MotherName);
                     cmd.Parameters.AddWithValue("@Address", std.Address);
+                    cmd.Parameters.AddWithValue("@Remark", std.Remarks);
+                    cmd.Parameters.AddWithValue("@Email", std.Email);
+                    cmd.Parameters.AddWithValue("@Mobile", std.Mobile);
                     con.Open();
-
                     cmd.ExecuteNonQuery();
+                    TempData["Message"] = "User Record " + std.FirstName + " updated successfully!";
                 }
-
-
             }
             catch (Exception ex)
             {
                 return View(ex.Message);
             }
+
             return RedirectToAction("ViewStudent");
         }
         #endregion
@@ -297,6 +303,7 @@ namespace SchoolBookManagementRecord.Controllers
                     cmd.Parameters.AddWithValue("@ID", id);
                     con.Open();
                     cmd.ExecuteNonQuery();
+                    TempData["Message"] = "User Record " + id + " is Deleted successfully!";
                 }
             }
             catch (Exception ex)

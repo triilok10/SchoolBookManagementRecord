@@ -1,0 +1,42 @@
+﻿@model  SchoolBookManagementRecord.Models.Student
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .centerDocAlign {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .centerDoc {
+        border: 1px solid black;
+        width: 500px;
+        height: 50vh;
+    }
+</style>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EDoc</title>
+</head>
+<body>
+    <br />
+   
+    <div class="container-md centerDocAlign">
+        <div class="centerDoc" id="studentContainer">
+          
+                <div class="d-inline-flex">
+                    <div>FirstName : @Model.FirstName</div>
+                    <div>LastName : @Model.LastName</div>
+                </div>
+            
+        </div>
+    </div>
+
+
+</body>
+</html>

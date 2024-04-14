@@ -224,7 +224,7 @@ namespace SchoolBookManagementRecord.Controllers
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Filepath", pStudent.Filepath);
                     cmd.Parameters.AddWithValue("@FirstName", pStudent.FirstName);
-                    cmd.Parameters.AddWithValue("@LastName", pStudent.LastName);
+                    cmd.Parameters.AddWithValue("@LastName",string.IsNullOrEmpty(pStudent.LastName) ? (object)DBNull.Value : pStudent.LastName);
                     cmd.Parameters.AddWithValue("@Class", pStudent.Class);
                     cmd.Parameters.AddWithValue("@Gender", pStudent.Gender);
                     cmd.Parameters.AddWithValue("@FatherName", pStudent.FatherName);
@@ -313,5 +313,55 @@ namespace SchoolBookManagementRecord.Controllers
             return RedirectToAction("ViewStudent");
         }
         #endregion
+
+        #region "EDOC"
+        public ActionResult EDoc(int Id)
+        {
+            Student student = null; 
+            try
+            {
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("GetEDOC", con);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", Id); 
+                    con.Open();
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        if (rdr.Read()) 
+                        {
+                            student = new Student(); 
+                            student.Id = Convert.ToInt32(rdr["ID"]);
+                            student.FirstName = Convert.ToString(rdr["FirstName"]);
+                            student.LastName = Convert.ToString(rdr["LastName"]);
+                            student.FatherName = Convert.ToString(rdr["FatherName"]);
+                            student.MotherName = Convert.ToString(rdr["MotherName"]);
+                            student.Address = Convert.ToString(rdr["Address"]);
+                            student.Remarks = Convert.ToString(rdr["Remark"]);
+                            student.Mobile = Convert.ToString(rdr["Mobile"]);
+                            student.Filepath = Convert.ToString(rdr["Filepath"]);
+                            if (Enum.TryParse<GenderType>(Convert.ToString(rdr["Gender"]), out GenderType gender))
+                            {
+                                student.Gender = gender;
+                            }
+                            if (Enum.TryParse<ClassName>(Convert.ToString(rdr["Class"]), out ClassName classname))
+                            {
+                                student.Class = classname;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return View(ex.Message);
+            }
+            return View(student);
+        }
+        #endregion
+
+
     }
+
+
 }

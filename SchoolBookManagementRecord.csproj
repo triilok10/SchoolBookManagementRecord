@@ -500,6 +500,7 @@
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
+    <Content Include="Views\StudentUtility\EDoc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\UserImages\" />

@@ -14,7 +14,6 @@ namespace SchoolBookManagementRecord.Models
 
         [Required(ErrorMessage = "Please Enter your FirstName")]
         public string FirstName { get; set; }
-
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Please Select your Class")]
@@ -43,7 +42,7 @@ namespace SchoolBookManagementRecord.Models
 
         [Required(ErrorMessage ="Please Select the Profile Photo")]
         public string Filepath { get; set; }
-
+        public DateTime? DateOfBirth { get; set; }
 
     }
     public enum ClassName

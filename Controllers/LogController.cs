@@ -10,7 +10,6 @@ namespace SchoolBookManagementRecord.Controllers
 {
     public class LogController : Controller
     {
-        // GET: Log
        public ActionResult LogInGet()
         {
             return View();

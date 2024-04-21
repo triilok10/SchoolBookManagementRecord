@@ -9,7 +9,7 @@
 
 <div class="text-center" style="padding:10px">
     <br />
-    <h2 class="text-danger"> View Student Record </h2>
+    <h2 class="text-danger"> View Teacher's Record </h2>
     <table id="tbJquerytable" class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -21,8 +21,8 @@
                 <th> Class </th>
                 <th> Gender </th>
                 <th> Address </th>
-                <th> Remarks </th>
                 <th> Mobile </th>
+                <th>Date Birth</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -38,9 +38,9 @@
                     <td> @item.Class</td>
                     <td> @item.Gender</td>
                     <td> @item.Address</td>
-                    <td> @item.Remarks </td>
                     <td> @item.Mobile</td>
-                    <td>@Html.ActionLink("ID Card", "EDoc" , new {@id=item.Id})</td>
+                    <td>@item.DateOfBirth</td>
+                    <td>@Html.ActionLink("ID Card", "EDoc", new { @id = item.Id })</td>
                 </tr>
             }
         </tbody>

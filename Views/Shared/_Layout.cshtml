@@ -3,18 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>School Management Application</title>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row no-g">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse" style="height:100%; position:fixed">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
-
                         <li class="nav-item">
                             @Html.ActionLink("School Management ", "Index", "Home", new { area = "" }, new { @class = "nav-link text-white p-3" })
                         </li>
@@ -49,8 +48,10 @@
                 </div>
             </nav>
             <!-- Main content area -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="background-color:lightgrey">
+            <main class="col-md-9 col-lg-10 ms-sm-auto" style="padding:0px;">
                 @RenderBody()
+                <!-- Scripts section -->
+                @RenderSection("scripts", required: false)
                 <hr />
                 <footer class="text-center">
                     <p>&copy; @DateTime.Now.Year - Developed by Trilok Chand Swami</p>

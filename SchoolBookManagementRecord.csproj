@@ -129,9 +129,6 @@
     </Compile>
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Student.cs" />
-    <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
-    <Compile Include="obj\Release\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
-    <Compile Include="obj\Release\FrameworkDisplayNameAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -166,9 +163,6 @@
     <Content Include="Images\transgender.png" />
     <Content Include="Images\Update.png" />
     <Content Include="Images\View.png" />
-    <Content Include="obj\Debug\SchoolBookManagementRecord.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\SchoolBookManagementRecord.dll" />
-    <Content Include="obj\Debug\SchoolBookManagementRecord.pdb" />
     <Content Include="packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll" />
     <Content Include="packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.pdb" />
     <Content Include="packages\bootstrap.5.2.3\bootstrap.png" />
@@ -216,11 +210,6 @@
     <Content Include="packages\bootstrap.5.2.3\content\Scripts\bootstrap.esm.min.js" />
     <Content Include="packages\bootstrap.5.2.3\content\Scripts\bootstrap.js" />
     <Content Include="packages\bootstrap.5.2.3\content\Scripts\bootstrap.min.js" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\SchoolBo.BD42A748.Up2Date" />
-    <Content Include="obj\Debug\SchoolBookManagementRecord.csproj.AssemblyReference.cache" />
-    <Content Include="obj\Debug\SchoolBookManagementRecord.csproj.CoreCompileInputs.cache" />
-    <Content Include="obj\Release\SchoolBookManagementRecord.csproj.AssemblyReference.cache" />
     <Content Include="libman.json" />
     <None Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1.js" />
@@ -509,7 +498,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\UserImages\" />
-    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
